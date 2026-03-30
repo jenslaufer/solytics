@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/*
+  Design System — Solytics
+  Typeface: Space Grotesk (geometric sans, technical feel, distinct from Inter/Roboto)
+  Scale: Major Third (1.25)
+  Color: Signal blue #2563EB primary, dark surface palette
+  Spacing: 8px base
+*/
+
+@theme {
+  /* Font */
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --default-font-family: "Space Grotesk", system-ui, sans-serif;
+
+  /* Surface palette — deep navy-black, 60% of page */
+  --color-surface-base: #0C0F14;
+  --color-surface-raised: #141821;
+  --color-surface-overlay: #1C212D;
+
+  /* Text */
+  --color-text-primary: #E8E9EC;
+  --color-text-muted: #8B90A0;
+
+  /* Brand — signal blue, 10% accent */
+  --color-brand: #2563EB;
+  --color-brand-hover: #1D4ED8;
+  --color-brand-glow: rgba(37, 99, 235, 0.15);
+
+  /* Semantic */
+  --color-border: #252A38;
+  --color-success: #22C55E;
+  --color-danger: #EF4444;
+
+  /* Motion — custom curves per interaction type */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-sine: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-base);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+/* Fluid type scale — Major Third (1.25) */
+/* Using clamp for fluid sizing between 375px and 1400px viewports */
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Pulsing dot animation for deadline badge */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s var(--ease-in-out-sine) infinite;
+}
+
+/* Counter for process steps */
+.process-counter {
+  counter-reset: step;
+}
+.process-counter > * {
+  counter-increment: step;
+}
+.process-counter > *::before {
+  content: counter(step, decimal-leading-zero);
+}
