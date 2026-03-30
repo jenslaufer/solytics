@@ -254,7 +254,7 @@ const trustItems = [
           v-for="(pain, i) in painPoints"
           :key="pain.title"
           :class="[
-            'pl-6 border-l-2 border-[var(--color-border)] py-6 transition-colors duration-250 hover:border-[var(--color-brand)]',
+            'pl-6 border-l-2 border-[var(--color-border)] py-6 transition-colors duration-200 hover:border-[var(--color-brand)]',
             i === 0 ? 'md:col-span-5' : 'md:col-span-7',
             i === 0 ? 'md:row-span-2' : '',
           ]"
@@ -340,7 +340,7 @@ const trustItems = [
             v-for="pkg in eRechnungPackages"
             :key="pkg.name"
             :class="[
-              'relative p-8 bg-[var(--color-surface-raised)] border rounded-lg transition-[border-color,transform] duration-250 hover:translate-y-[-2px]',
+              'relative p-8 bg-[var(--color-surface-raised)] border rounded-lg transition-[border-color,transform] duration-300 hover:translate-y-[-2px]',
               pkg.featured
                 ? 'border-[var(--color-brand)] hover:border-[var(--color-brand)]'
                 : 'border-[var(--color-border)] hover:border-[var(--color-brand)]',
@@ -387,7 +387,7 @@ const trustItems = [
             v-for="pkg in kiPackages"
             :key="pkg.name"
             :class="[
-              'relative p-8 bg-[var(--color-surface-raised)] border rounded-lg transition-[border-color,transform] duration-250 hover:translate-y-[-2px]',
+              'relative p-8 bg-[var(--color-surface-raised)] border rounded-lg transition-[border-color,transform] duration-300 hover:translate-y-[-2px]',
               pkg.featured
                 ? 'border-[var(--color-brand)] hover:border-[var(--color-brand)]'
                 : 'border-[var(--color-border)] hover:border-[var(--color-brand)]',
@@ -508,15 +508,21 @@ const trustItems = [
         </p>
       </div>
 
-      <!-- Trust grid — offset layout, not 4 equal columns -->
-      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Trust grid — first item spans 2 cols as anchor -->
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
         <div
-          v-for="item in trustItems"
+          v-for="(item, i) in trustItems"
           :key="item.title"
-          class="text-center p-8"
+          :class="[
+            'p-8',
+            i === 0 ? 'lg:col-span-3 text-left bg-[var(--color-surface-raised)] border border-[var(--color-border)] rounded-lg' : 'lg:col-span-1 text-center',
+          ]"
         >
           <!-- Icon container -->
-          <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center bg-[var(--color-brand-glow)] rounded-[10px] text-[var(--color-brand)]">
+          <div :class="[
+            'w-12 h-12 mb-4 flex items-center justify-center bg-[var(--color-brand-glow)] rounded-[10px] text-[var(--color-brand)]',
+            i === 0 ? '' : 'mx-auto',
+          ]">
             <!-- Shield -->
             <svg v-if="item.icon === 'shield'" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>

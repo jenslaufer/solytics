@@ -24,7 +24,9 @@
   --color-text-primary: #E8E9EC;
   --color-text-muted: #8B90A0;
 
-  /* Brand — signal blue, 10% accent */
+  /* Brand — signal blue, 10% accent, with tonal scale */
+  --color-brand-100: rgba(37, 99, 235, 0.08);
+  --color-brand-200: rgba(37, 99, 235, 0.15);
   --color-brand: #2563EB;
   --color-brand-hover: #1D4ED8;
   --color-brand-glow: rgba(37, 99, 235, 0.15);
@@ -48,9 +50,16 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-optical-sizing: auto;
   background-color: var(--color-surface-base);
   color: var(--color-text-primary);
   line-height: 1.6;
+}
+
+/* Focus-visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
 }
 
 /* Selection */

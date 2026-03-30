@@ -26,7 +26,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
       </a>
       <a
         href="https://calendly.com/solytics"
-        class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-brand)] text-white text-sm font-semibold rounded-md no-underline transition-[background-color,transform] duration-200 hover:bg-[var(--color-brand-hover)] hover:translate-y-[-1px] active:translate-y-0"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-brand)] text-white text-sm font-semibold rounded-md no-underline transition-[background-color,transform] duration-150 hover:bg-[var(--color-brand-hover)] hover:translate-y-[-1px] active:translate-y-0"
         style="transition-timing-function: var(--ease-out-expo)"
       >
         Gespraech buchen
